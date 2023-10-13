@@ -1,7 +1,66 @@
+/* Utilites */
+
+.card {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0.875rem;
+  text-align: center;
+  background-color: white;
+}
+
 /* Class Styles */
 
 .page {
   height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+.content {
+  padding: 1rem;
+  background-color: var(--content-primary-background-color);
+  color: var(--content-primary-color);
+}
+
+.content__site-description > h1 {
+  margin-bottom: 1rem;
+}
+
+.content__site-description > p {
+  margin-bottom: 1rem;
+}
+
+.content__image > img {
+  border-radius: 0.875rem;
+}
+
+.content__feature-info {
+  flex-direction: column;
+}
+
+.content__feature-description > h2 {
+  margin-bottom: 1rem;
+}
+
+.content__feature-description > p {
+  margin-bottom: 1rem;
+}
+
+.content__links a {
+  padding: 0.75rem;
+  text-decoration: none;
+  border-radius: 0.875rem;
+  background-color: var(--button-background-color);
+  color: var(--button-color);
+}
+
+.content__links a:hover {
+  background-color: var(--button-background-color-hover);
+  color: var(--button-color-hover);
+}
+
+@media (min-width: 900px) {
+  .content__feature-info {
+    flex-direction: row;
+  }
 }
