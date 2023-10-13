@@ -53,6 +53,25 @@ header {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
 
+footer {
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--footer-background-color);
+  color: var(--footer-color);
+  font-family: var(--footer-font);
+}
+
+footer a,
+footer a:visited {
+  text-decoration: none;
+  color: var(--footer-color);
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 /* Utilities */
 
 .flex {
