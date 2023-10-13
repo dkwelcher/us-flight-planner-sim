@@ -4,13 +4,15 @@
   --header-link-color: #dbeafe;
   --header-link-hover-color: #ffffff;
   --header-font: Verdana, Geneva, Tahoma, sans-serif;
-  --content-primary-background-color: #dbeafe;
-  --content-secondary-background-color: #eff6ff;
-  --content-primary-color: #eff6ff;
-  --content-secondary-color: #000000;
+  --content-primary-background-color: #eff6ff;
+  --content-primary-color: #000000;
   --footer-background-color: #172554;
   --footer-color: #eff6ff;
   --footer-font: Arial, Helvetica, sans-serif;
+  --button-background-color: #60a5fa;
+  --button-background-color-hover: #b0cdf4;
+  --button-color: #eff6ff;
+  --button-color-hover: #172554;
 }
 
 /* CSS Reset */
