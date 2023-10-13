@@ -18,8 +18,8 @@
 
 .content {
   padding: 1rem;
-  background-color: var(--content-primary-background-color);
-  color: var(--content-primary-color);
+  background-color: var(--bg-neutral-200);
+  color: var(--clr-primary-900);
 }
 
 .content__site-description > h1 {
@@ -50,13 +50,13 @@
   padding: 0.75rem;
   text-decoration: none;
   border-radius: 0.875rem;
-  background-color: var(--button-background-color);
-  color: var(--button-color);
+  background-color: var(--bg-primary-500);
+  color: var(--clr-neutral-300);
 }
 
 .content__links a:hover {
-  background-color: var(--button-background-color-hover);
-  color: var(--button-color-hover);
+  background-color: var(--bg-primary-400);
+  color: var(--clr-primary-700);
 }
 
 @media (min-width: 900px) {
