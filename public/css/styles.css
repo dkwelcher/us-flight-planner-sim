@@ -1,18 +1,21 @@
 :root {
-  --header-background-color: linear-gradient(to right, #1e3a8a, #60a5fa);
-  --header-color: #eff6ff;
-  --header-link-color: #dbeafe;
-  --header-link-hover-color: #ffffff;
-  --header-font: Verdana, Geneva, Tahoma, sans-serif;
-  --content-primary-background-color: #eff6ff;
-  --content-primary-color: #000000;
-  --footer-background-color: #172554;
-  --footer-color: #eff6ff;
-  --footer-font: Arial, Helvetica, sans-serif;
-  --button-background-color: #60a5fa;
-  --button-background-color-hover: #b0cdf4;
-  --button-color: #eff6ff;
-  --button-color-hover: #172554;
+  --bg-primary-gradient: linear-gradient(to right, #1e3a8a, #60a5fa);
+
+  --bg-primary-400: #b0cdf4;
+  --bg-primary-500: #60a5fa;
+  --bg-primary-700: #172554;
+
+  --bg-neutral-200: #eff6ff;
+
+  --clr-primary-700: #172554;
+  --clr-primary-900: #101010;
+
+  --clr-neutral-200: #ffffff;
+  --clr-neutral-300: #eff6ff;
+  --clr-neutral-400: #dbeafe;
+
+  --ff-primary: Verdana, Geneva, Tahoma, sans-serif;
+  --ff-secondary: Arial, Helvetica, sans-serif;
 }
 
 /* CSS Reset */
@@ -29,6 +32,7 @@
 
 body {
   line-height: 1.5;
+  height: 100vh;
 }
 
 img {
@@ -43,10 +47,6 @@ button {
 
 /* General Styles */
 
-body {
-  height: 100vh;
-}
-
 header {
   padding: 2rem;
   position: sticky;
@@ -59,15 +59,15 @@ footer {
   padding: 2rem;
   justify-content: center;
   align-items: center;
-  background-color: var(--footer-background-color);
-  color: var(--footer-color);
-  font-family: var(--footer-font);
+  background-color: var(--bg-primary-700);
+  color: var(--clr-neutral-300);
+  font-family: var(--ff-secondary);
 }
 
 footer a,
 footer a:visited {
   text-decoration: none;
-  color: var(--footer-color);
+  color: var(--clr-neutral-300);
 }
 
 footer a:hover {
@@ -85,12 +85,12 @@ footer a:hover {
 .header {
   justify-content: space-around;
   align-items: center;
-  background: var(--header-background-color);
-  font-family: var(--header-font);
+  background: var(--bg-primary-gradient);
+  font-family: var(--ff-primary);
 }
 
 .header a {
-  color: var(--header-color);
+  color: var(--clr-neutral-300);
 }
 
 .header__title {
@@ -107,9 +107,9 @@ footer a:hover {
 }
 
 .header__links > a {
-  color: var(--header-link-color);
+  color: var(--clr-neutral-400);
 }
 
 .header__links > a:hover {
-  color: var(--header-link-hover-color);
+  color: var(--clr-neutral-200);
 }
