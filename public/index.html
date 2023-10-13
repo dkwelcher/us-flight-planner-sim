@@ -4,8 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>US Flight Planner</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/index.css" />
     <script src="index.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="page">
+      <header class="header flex">
+        <p class="header__title"><a href="#">Flight Planner</a></p>
+        <div class="header__links flex">
+          <a href="#">Aircraft Manager</a>
+          <a href="#">Flight Planner</a>
+        </div>
+      </header>
+      <main class="content">
+        <div class="content__site-info">
+          <h1>Plan your own Flights</h1>
+          <p>
+            Create your own aircraft and plan flights across the United States.
+          </p>
+          <div class="content__links">
+            <a href="#">Create Aircraft</a>
+            <a href="#">Plan Flights</a>
+          </div>
+        </div>
+        <div class="content-image">
+          <img
+            src="./images/airplane-clouds.png"
+            alt="Airplane flying in cloudy skies"
+          />
+        </div>
+      </main>
+      <footer>
+        Copyright &copy;&nbsp;<span id="current-year">2023</span>&nbsp;<a
+          href="https://github.com/dkwelcher"
+          id="author-link"
+          >dkwelcher</a
+        >
+      </footer>
+    </div>
+  </body>
 </html>
