@@ -12,7 +12,12 @@
 }
 
 .manager__title {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.manager__card-container {
+  flex-direction: column;
 }
 
 .manager__card {
@@ -23,6 +28,10 @@
 
 .manager__card > h3 {
   margin-bottom: 0.5rem;
+}
+
+.manager__card + .manager__card {
+  margin-top: 1rem;
 }
 
 .manager__form {
@@ -51,7 +60,21 @@
   color: var(--clr-neutral-300);
 }
 
+.manager__button + .manager__button {
+  margin-left: 1rem;
+}
+
 .manager__button:hover {
   background-color: var(--bg-primary-400);
   color: var(--clr-primary-700);
+}
+
+@media (min-width: 800px) {
+  .manager__card-container {
+    flex-direction: row;
+  }
+
+  .manager__card + .manager__card {
+    margin: 0 1rem 0;
+  }
 }
