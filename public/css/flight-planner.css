@@ -1,0 +1,96 @@
+/* General Styles */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Class Styles */
+
+.planner {
+  padding: 1rem;
+}
+
+.planner__text-container {
+  flex-direction: column;
+}
+
+.planner__image {
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.planner__title {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.planner__card {
+  margin-bottom: 1rem;
+  padding: 1.5rem 3.5rem;
+  border-radius: 0.875rem;
+  background-color: var(--bg-neutral-100);
+}
+
+.planner__card > h3 {
+  margin-bottom: 0.5rem;
+}
+
+.planner__card select {
+  margin-bottom: 0.5rem;
+}
+
+.planner__form {
+  flex-direction: column;
+}
+
+.planner__button-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.planner__leg-table {
+  margin-bottom: 1rem;
+}
+
+.planner__map {
+  min-height: 400px;
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .planner__text-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+  }
+  .planner__card {
+    margin-right: 1rem;
+    min-width: 400px;
+  }
+
+  .planner__leg-table {
+    min-width: 400px;
+  }
+
+  .planner__map-container {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .planner__map {
+    max-width: 800px;
+  }
+}
