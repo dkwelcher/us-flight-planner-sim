@@ -1,0 +1,57 @@
+/* Class Styles */
+
+.manager {
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.manager__image {
+  margin-bottom: 2rem;
+}
+
+.manager__title {
+  margin-bottom: 1rem;
+}
+
+.manager__card {
+  padding: 1.5rem 3.5rem;
+  border-radius: 0.875rem;
+  background-color: var(--bg-neutral-100);
+}
+
+.manager__card > h3 {
+  margin-bottom: 0.5rem;
+}
+
+.manager__form {
+  flex-direction: column;
+}
+
+.manager__form > input {
+  margin-bottom: 0.5rem;
+}
+
+.manager__form > p {
+  margin-bottom: 0.5rem;
+  color: var(--clr-error-msg);
+}
+
+.manager__button-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.manager__button {
+  padding: 0.25rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  background-color: var(--bg-primary-500);
+  color: var(--clr-neutral-300);
+}
+
+.manager__button:hover {
+  background-color: var(--bg-primary-400);
+  color: var(--clr-primary-700);
+}
