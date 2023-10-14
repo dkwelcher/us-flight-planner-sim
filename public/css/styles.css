@@ -36,6 +36,8 @@
 body {
   line-height: 1.5;
   height: 100vh;
+  background-color: var(--bg-neutral-200);
+  color: var(--clr-primary-900);
 }
 
 img {
@@ -89,8 +91,6 @@ footer a:hover {
   height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background-color: var(--bg-neutral-200);
-  color: var(--clr-primary-900);
 }
 
 .header {
