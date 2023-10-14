@@ -6,6 +6,19 @@
     <title>US Flight Planner</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/flight-planner.css" />
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <!-- JQuery Script -->
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <!-- Leaflet Script -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      defer
+    ></script>
+    <script src="./js/flight-planner.js" defer></script>
   </head>
   <body>
     <div class="page">
@@ -17,7 +30,76 @@
           <a href="./aircraft-manager.html">Aircraft Manager</a>
         </div>
       </header>
-      <main></main>
+      <main class="planner">
+        <div class="planner__title">
+          <div class="planner__image flex">
+            <img
+              src="./images/airplane-logo.png"
+              alt="White commercial jet with a blue stripe flying left of page"
+            />
+          </div>
+          <h1>Flight Planner</h1>
+        </div>
+        <div class="planner__text-container flex">
+          <div class="planner__card">
+            <h3>Plan your Flight</h3>
+            <div class="planner__form flex">
+              <label for="aircraft-name">Select aircraft:</label>
+              <select id="aircraft-name"></select>
+              <label for="starting-airport-name"
+                >Select starting airport:</label
+              >
+              <select id="starting-airport-name"></select>
+              <label for="destination-airport-name"
+                >Select destination airport:</label
+              >
+              <select id="destination-airport-name"></select>
+            </div>
+            <div class="planner__button-container flex">
+              <button id="create-flight-plan" type="button">Plan</button>
+            </div>
+          </div>
+          <div class="planner__leg-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>LEG</th>
+                  <th>ICAO</th>
+                  <th>NAME</th>
+                  <th>DIRECTION</th>
+                  <th>MILES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="planner__map-container flex">
+          <div id="planner-map" class="planner__map"></div>
+        </div>
+      </main>
       <footer class="flex">
         Copyright &copy;&nbsp;<span id="current-year">2023</span>&nbsp;<a
           href="https://github.com/dkwelcher"
