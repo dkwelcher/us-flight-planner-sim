@@ -5,6 +5,7 @@
   --bg-primary-500: #60a5fa;
   --bg-primary-700: #172554;
 
+  --bg-neutral-100: #ffffff;
   --bg-neutral-200: #eff6ff;
 
   --clr-primary-700: #172554;
@@ -13,6 +14,8 @@
   --clr-neutral-200: #ffffff;
   --clr-neutral-300: #eff6ff;
   --clr-neutral-400: #dbeafe;
+
+  --clr-error-msg: #ee2e2e;
 
   --ff-primary: Verdana, Geneva, Tahoma, sans-serif;
   --ff-secondary: Arial, Helvetica, sans-serif;
@@ -81,6 +84,14 @@ footer a:hover {
 }
 
 /* Class Styles */
+
+.page {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: var(--bg-neutral-200);
+  color: var(--clr-primary-900);
+}
 
 .header {
   justify-content: space-around;
