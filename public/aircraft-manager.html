@@ -18,30 +18,52 @@
         </div>
       </header>
       <main class="manager flex">
-        <div class="manager__image">
-          <img
-            src="./images/airplane-logo.png"
-            alt="White commercial jet with a blue stripe flying left of page"
-          />
-        </div>
         <div class="manager__title">
+          <div class="manager__image">
+            <img
+              src="./images/airplane-logo.png"
+              alt="White commercial jet with a blue stripe flying left of page"
+            />
+          </div>
           <h1>Aircraft Manager</h1>
         </div>
-        <div class="manager__card">
-          <h3>Create Aircraft</h3>
-          <div class="manager__form flex">
-            <label for="aircraft-id">ID:</label>
-            <input id="aircraft-id" type="text" />
-            <label for="aircraft-name">Name:</label>
-            <input id="aircraft-name" type="text" />
-            <label for="aircraft-range">Range (miles):</label>
-            <input id="aircraft-range" type="text" />
-            <p id="error-msg">Error</p>
+        <div class="manager__card-container flex">
+          <div class="manager__card">
+            <h3>Create Aircraft</h3>
+            <div class="manager__form flex">
+              <label for="create-aircraft-id">ID:</label>
+              <input id="create-aircraft-id" type="text" />
+              <label for="create-aircraft-name">Name:</label>
+              <input id="create-aircraft-name" type="text" />
+              <label for="create-aircraft-range">Range (miles):</label>
+              <input id="create-aircraft-range" type="text" />
+              <p id="error-msg">Error</p>
+            </div>
+            <div class="manager__button-container flex">
+              <button id="create-button" class="manager__button" type="button">
+                Create
+              </button>
+            </div>
           </div>
-          <div class="manager__button-container flex">
-            <button id="create-button" class="manager__button" type="button">
-              Create
-            </button>
+          <div class="manager__card">
+            <h3>Modify Aircraft</h3>
+            <div class="manager__form flex">
+              <label for="modify-aircraft-id">ID:</label>
+              <input id="modify-aircraft-id" type="text" />
+              <label for="modify-aircraft-name">Name:</label>
+              <input id="modify-aircraft-name" type="text" />
+              <label for="modify-aircraft-range">Range (miles):</label>
+              <input id="modify-aircraft-range" type="text" />
+              <p id="error-msg">Error</p>
+            </div>
+            <div class="manager__button-container flex">
+              <button id="select-button" class="manager__button" type="button">
+                Select
+              </button>
+              <button id="modify-button" class="manager__button" type="button">
+                Modify
+              </button>
+            </div>
           </div>
         </div>
       </main>
