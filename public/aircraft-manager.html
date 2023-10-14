@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>US Flight Planner</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/aircraft-manager.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header flex">
+        <p class="header__title">
+          <a href="./index.html">US Flight Planner</a>
+        </p>
+        <div class="header__links flex">
+          <a href="#">Flight Planner</a>
+        </div>
+      </header>
+      <main class="manager flex">
+        <div class="manager__image">
+          <img
+            src="./images/airplane-logo.png"
+            alt="White commercial jet with a blue stripe flying left of page"
+          />
+        </div>
+        <div class="manager__title">
+          <h1>Aircraft Manager</h1>
+        </div>
+        <div class="manager__card">
+          <h3>Create Aircraft</h3>
+          <div class="manager__form flex">
+            <label for="aircraft-id">ID:</label>
+            <input id="aircraft-id" type="text" />
+            <label for="aircraft-name">Name:</label>
+            <input id="aircraft-name" type="text" />
+            <label for="aircraft-range">Range (miles):</label>
+            <input id="aircraft-range" type="text" />
+            <p id="error-msg">Error</p>
+          </div>
+          <div class="manager__button-container flex">
+            <button id="create-button" class="manager__button" type="button">
+              Create
+            </button>
+          </div>
+        </div>
+      </main>
+      <footer class="flex">
+        Copyright &copy;&nbsp;<span id="current-year">2023</span>&nbsp;<a
+          href="https://github.com/dkwelcher"
+          id="author-link"
+          >dkwelcher</a
+        >
+      </footer>
+    </div>
+  </body>
+</html>
