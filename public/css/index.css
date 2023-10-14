@@ -76,6 +76,7 @@
 
   .content__site-description {
     width: 100%;
+    padding: 1rem;
   }
 
   .content__image > img {
@@ -88,6 +89,9 @@
 
   .content__feature-description {
     width: 100%;
-    margin: 1rem;
+  }
+
+  .content__feature-description + .content__feature-description {
+    margin-left: 1rem;
   }
 }
