@@ -61,6 +61,19 @@ th {
   align-items: center;
 }
 
+.planner__button {
+  padding: 0.25rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  background-color: var(--bg-primary-500);
+  color: var(--clr-neutral-300);
+}
+
+.planner__button:hover {
+  background-color: var(--bg-primary-400);
+  color: var(--clr-primary-700);
+}
+
 .planner__leg-table {
   margin-bottom: 1rem;
 }
