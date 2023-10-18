@@ -47,6 +47,10 @@
   color: var(--clr-error-msg);
 }
 
+.manager__error {
+  visibility: hidden;
+}
+
 .manager__button-container {
   justify-content: center;
   align-items: center;
