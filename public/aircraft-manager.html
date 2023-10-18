@@ -6,6 +6,9 @@
     <title>US Flight Planner</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/aircraft-manager.css" />
+    <!-- JQuery Script -->
+    <script src="../node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="./js/aircraft-manager.js" defer></script>
   </head>
   <body>
     <div class="page">
@@ -37,7 +40,7 @@
               <input id="create-aircraft-name" type="text" />
               <label for="create-aircraft-range">Range (miles):</label>
               <input id="create-aircraft-range" type="text" />
-              <p id="error-msg">Error</p>
+              <p id="error-msg-create" class="manager__error">Error</p>
             </div>
             <div class="manager__button-container flex">
               <button id="create-button" class="manager__button" type="button">
@@ -49,12 +52,12 @@
             <h3>Modify Aircraft</h3>
             <div class="manager__form flex">
               <label for="modify-aircraft-id">ID:</label>
-              <input id="modify-aircraft-id" type="text" />
+              <input id="modify-aircraft-id" type="text" disabled />
               <label for="modify-aircraft-name">Name:</label>
-              <input id="modify-aircraft-name" type="text" />
+              <input id="modify-aircraft-name" type="text" disabled />
               <label for="modify-aircraft-range">Range (miles):</label>
-              <input id="modify-aircraft-range" type="text" />
-              <p id="error-msg">Error</p>
+              <input id="modify-aircraft-range" type="text" disabled />
+              <p id="error-msg-modify" class="manager__error">Error</p>
             </div>
             <div class="manager__button-container flex">
               <button id="select-button" class="manager__button" type="button">
