@@ -4,6 +4,14 @@
   display: none;
 }
 
+.success-background-color {
+  background-color: green;
+}
+
+.failure-background-color {
+  background-color: red;
+}
+
 /* Class Styles */
 
 .success-strip {
@@ -13,11 +21,11 @@
   position: fixed;
   top: 0;
   z-index: 1001;
-  background-color: green;
   color: white;
 }
 
 .success-strip__close-button {
+  margin: 0 0.5rem;
   padding: 0;
   line-height: 1;
   font-size: 1.25rem;
@@ -48,7 +56,7 @@
 }
 
 .manager__card {
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 2.5rem;
   border-radius: 0.875rem;
   background-color: var(--bg-neutral-100);
 }
