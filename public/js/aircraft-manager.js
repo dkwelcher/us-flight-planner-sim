@@ -1,3 +1,5 @@
+// CREATE AIRCRAFT
+
 $("#create-button").on("click", function () {
   const id = $("#create-aircraft-id").val().trim();
   const name = $("#create-aircraft-name").val().trim();
@@ -21,10 +23,18 @@ $("#create-button").on("click", function () {
       success: function (response) {
         if (response.message === "SUCCESS") {
           $("#aircraft-name").text(name);
-          $(".success-strip").removeClass("hidden");
+          $("#success-fail-msg").text(" has been successfully created!");
+          $(".success-strip")
+            .removeClass("hidden")
+            .removeClass("failure-background-color")
+            .addClass("success-background-color");
+        } else {
+          $("#success-fail-msg").text("Something went wrong.");
+          $(".success-strip")
+            .removeClass("hidden")
+            .removeClass("success-background-color")
+            .addClass("failure-background-color");
         }
-
-        //TODO: handle unexpected
       },
       error: function (error) {
         console.log("Error: " + error);
