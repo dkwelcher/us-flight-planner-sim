@@ -11,9 +11,9 @@ app.use(express.json());
 app.post("/create-aircraft", (req, res) => {
   const { id, name, range } = req.body;
 
-  console.log(req.body);
+  // Create airport in database
 
-  res.json({ message: "Aircraft created successfully!" });
+  res.json({ message: "SUCCESS" });
 });
 
 app.listen(PORT, () => {
