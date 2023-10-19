@@ -19,7 +19,12 @@ $("#create-button").on("click", function () {
       }),
       contentType: "application/json",
       success: function (response) {
-        console.log(response.message);
+        if (response.message === "SUCCESS") {
+          $("#aircraft-name").text(name);
+          $(".success-strip").removeClass("hidden");
+        }
+
+        //TODO: handle unexpected
       },
       error: function (error) {
         console.log("Error: " + error);
@@ -43,3 +48,7 @@ function validateInput(id, name, range) {
 function isAllDigits(range) {
   return /^\d+$/.test(range);
 }
+
+$("#success-close-button").on("click", function () {
+  $(".success-strip").addClass("hidden");
+});
