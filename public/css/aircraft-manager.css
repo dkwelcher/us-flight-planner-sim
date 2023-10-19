@@ -1,4 +1,31 @@
+/* Utilities */
+
+.hidden {
+  display: none;
+}
+
 /* Class Styles */
+
+.success-strip {
+  width: 100%;
+  padding: 10px;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1001;
+  background-color: green;
+  color: white;
+}
+
+.success-strip__close-button {
+  padding: 0;
+  line-height: 1;
+  font-size: 1.25rem;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
 
 .manager {
   padding: 1rem;
