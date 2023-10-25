@@ -85,3 +85,23 @@ app.post("/search-aircraft", async (req, res) => {
 
   res.json(results);
 });
+
+// UPDATE AIRCRAFT
+
+app.put("/update-aircraft", (req, res) => {
+  const { id, name, range } = req.body;
+
+  if (!id || !name || !range) {
+    return res.status(400).json({ message: "All fields are required!" });
+  }
+
+  const ref = db.ref(`aircrafts/${id}`);
+
+  ref.update({ name, range }, (error) => {
+    if (error) {
+      res.status(500).json({ message: "Failed to update aircraft." });
+    } else {
+      res.json({ message: "Aircraft updated successfully." });
+    }
+  });
+});
