@@ -54,6 +54,7 @@ th {
 
 .planner__form {
   flex-direction: column;
+  margin-bottom: 0.75rem;
 }
 
 .planner__button-container {
