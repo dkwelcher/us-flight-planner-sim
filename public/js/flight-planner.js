@@ -44,6 +44,7 @@ $(function () {
   const mapContainer = $("#planner-map");
   let map;
   let polyline;
+  let markersArray = [];
 
   if (mapContainer.length) {
     map = L.map("planner-map").setView([37.0902, -95.7129], 3);
@@ -87,6 +88,12 @@ $(function () {
       map.removeLayer(polyline);
     }
 
+    markersArray.forEach((marker) => {
+      map.removeLayer(marker);
+    });
+
+    markersArray = [];
+
     const detailedPath = response.data;
 
     const latlngs = detailedPath.map((airport) => [
@@ -103,6 +110,8 @@ $(function () {
         <strong>Latitude:</strong> ${airport.Latitude}<br>
         <strong>Longitude:</strong> ${airport.Longitude}
       `);
+
+      markersArray.push(marker);
     });
 
     map.fitBounds(polyline.getBounds());
