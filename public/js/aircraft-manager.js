@@ -36,7 +36,8 @@ $(function () {
               "#create-aircraft-id, #create-aircraft-name, #create-aircraft-range"
             ).val("");
           } else {
-            $("#success-fail-msg").text("Something went wrong.");
+            $("#aircraft-name").text("");
+            $("#success-fail-msg").text(response.message);
             $(".success-strip")
               .removeClass("hidden")
               .removeClass("success-background-color")
@@ -142,6 +143,7 @@ $(function () {
             ).val("");
             $("#modify-button").prop("disabled", true);
           } else {
+            $("#aircraft-name").text("");
             $("#success-fail-msg").text(response.message);
             $(".success-strip")
               .removeClass("hidden")
@@ -185,7 +187,8 @@ $(function () {
             ).val("");
             $("#delete-button").prop("disabled", true);
           } else {
-            $("#success-fail-msg").text("Something went wrong.");
+            $("#aircraft-name").text("");
+            $("#success-fail-msg").text(response.message);
             $(".success-strip")
               .removeClass("hidden")
               .removeClass("success-background-color")
