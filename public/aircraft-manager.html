@@ -85,6 +85,35 @@
           </div>
         </div>
       </main>
+
+      <div id="aircraft-search-modal" class="modal">
+        <div class="modal__content">
+          <div class="modal__interactives flex">
+            <div class="modal__input">
+              <input
+                type="text"
+                id="modal-search-input"
+                class="modal__search-input"
+                placeholder="Search aircraft..."
+              />
+            </div>
+            <div class="modal__buttons flex">
+              <button id="modal-search-button" class="modal__search-button">
+                Search
+              </button>
+              <button
+                id="modal-close-button"
+                class="modal__close-button"
+                type="button"
+              >
+                X
+              </button>
+            </div>
+          </div>
+          <div id="modal-search-results" class="modal__search-results"></div>
+        </div>
+      </div>
+
       <footer class="flex">
         Copyright &copy;&nbsp;<span id="current-year">2023</span>&nbsp;<a
           href="https://github.com/dkwelcher"
