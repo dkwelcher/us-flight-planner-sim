@@ -37,7 +37,7 @@ app.post("/create-aircraft", (req, res) => {
 
   ref.set({ id, name, range }, (error) => {
     if (error) {
-      res.status(500).json({ message: "FAILURE" });
+      res.status(500).json({ message: "Failed to create aircraft" });
     } else {
       res.json({ message: "SUCCESS" });
     }
@@ -115,7 +115,7 @@ app.delete("/delete-aircraft/:id", (req, res) => {
 
   ref.remove((error) => {
     if (error) {
-      res.status(500).json({ message: "FAILURE" });
+      res.status(500).json({ message: "Failed to delete aircraft" });
     } else {
       res.json({ message: "SUCCESS" });
     }
