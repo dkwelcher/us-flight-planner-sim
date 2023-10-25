@@ -167,3 +167,150 @@ app.get("/airports", async (req, res) => {
 
   res.json(results);
 });
+
+// CREATE FLIGHT PLAN
+
+app.post("/create-flight-plan", async (req, res) => {
+  const { aircraftId, startingAirportICAO, destinationAirportICAO } = req.body;
+
+  try {
+    const airportsRef = db.ref("airports");
+    const airportsSnapshot = await airportsRef.once("value");
+    const airportsData = airportsSnapshot.val();
+
+    const start = {
+      ...airportsData[startingAirportICAO],
+      latitude: parseFloat(airportsData[startingAirportICAO].latitude),
+      longitude: parseFloat(airportsData[startingAirportICAO].longitude),
+    };
+
+    const destination = {
+      ...airportsData[destinationAirportICAO],
+      latitude: parseFloat(airportsData[destinationAirportICAO].latitude),
+      longitude: parseFloat(airportsData[destinationAirportICAO].longitude),
+    };
+
+    const icaoToAirport = new Map(Object.entries(airportsData));
+
+    const airplaneRef = db.ref(`aircrafts/${aircraftId}`);
+    const airplaneSnapshot = await airplaneRef.once("value");
+    const airplane = {
+      ...airplaneSnapshot.val(),
+      range: parseFloat(airplaneSnapshot.val().range),
+    };
+
+    const graph = createGraph(airportsData, airplane);
+    const path = findShortestPath(
+      graph,
+      startingAirportICAO,
+      destinationAirportICAO,
+      airportsData
+    );
+
+    if (path) {
+      res.json({ status: "success", data: path });
+    } else {
+      res.status(400).json({ status: "error", message: "No path found" });
+    }
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Server error",
+      error: error.message,
+    });
+  }
+});
+
+// Haversine formula
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius of the earth in km
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const d = R * c; // Distance in km
+  return d * 0.621371; // Convert km to miles and return
+}
+
+function createGraph(airportsData, airplane) {
+  const graph = new Map();
+
+  for (const icao1 in airportsData) {
+    graph.set(icao1, {});
+    for (const icao2 in airportsData) {
+      if (icao1 !== icao2) {
+        const distance = calculateDistance(
+          parseFloat(airportsData[icao1].latitude),
+          parseFloat(airportsData[icao1].longitude),
+          parseFloat(airportsData[icao2].latitude),
+          parseFloat(airportsData[icao2].longitude)
+        );
+        if (distance <= airplane.range) {
+          graph.get(icao1)[icao2] = distance;
+        }
+      }
+    }
+  }
+
+  return graph;
+}
+
+function buildDetailedPath(path, airportsData) {
+  const detailedPath = [];
+  for (let i = 0; i < path.length; i++) {
+    const currentICAO = path[i];
+
+    detailedPath.push({
+      ICAO: currentICAO,
+      AirportName: airportsData[currentICAO].name,
+      Latitude: parseFloat(airportsData[currentICAO].latitude),
+      Longitude: parseFloat(airportsData[currentICAO].longitude),
+    });
+  }
+
+  return detailedPath;
+}
+
+// Dijkstra's Algorithm
+function findShortestPath(graph, startICAO, destICAO, airportsData) {
+  const shortestDist = {};
+  const prev = {};
+  const unseenNodes = new Map();
+
+  for (const airport of graph.keys()) {
+    shortestDist[airport] = Infinity;
+    unseenNodes.set(airport, graph.get(airport));
+  }
+
+  shortestDist[startICAO] = 0;
+
+  while (unseenNodes.size) {
+    const currAirport = [...unseenNodes.entries()].reduce((a, b) =>
+      shortestDist[a[0]] < shortestDist[b[0]] ? a : b
+    )[0];
+
+    for (const neighbor in unseenNodes.get(currAirport)) {
+      const alt =
+        shortestDist[currAirport] + unseenNodes.get(currAirport)[neighbor];
+      if (alt < shortestDist[neighbor]) {
+        shortestDist[neighbor] = alt;
+        prev[neighbor] = currAirport;
+      }
+    }
+    unseenNodes.delete(currAirport);
+  }
+
+  const path = [];
+  let u = destICAO;
+  while (u) {
+    path.unshift(u);
+    u = prev[u];
+  }
+
+  return buildDetailedPath(path, airportsData);
+}
