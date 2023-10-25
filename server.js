@@ -28,6 +28,8 @@ admin.initializeApp({
 
 const db = admin.database();
 
+// CREATE AIRCRAFT
+
 app.post("/create-aircraft", (req, res) => {
   const { id, name, range } = req.body;
 
@@ -44,4 +46,42 @@ app.post("/create-aircraft", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
+});
+
+// SEARCH AIRCRAFT(S)
+
+app.post("/search-aircraft", async (req, res) => {
+  const query = req.body.query.trim().toLowerCase();
+
+  if (query === "") {
+    return;
+  }
+
+  let results = [];
+
+  // Exact ID search
+  const idRef = db.ref("aircrafts").child(query);
+  const idSnapshot = await idRef.once("value");
+  const idMatch = idSnapshot.val();
+  if (idMatch) {
+    results.push(idMatch);
+    return res.json(results);
+  }
+
+  // Name search
+  const aircraftsRef = db.ref("aircrafts");
+  const snapshot = await aircraftsRef.once("value");
+  snapshot.forEach((childSnapshot) => {
+    const aircraft = childSnapshot.val();
+    const aircraftKey = childSnapshot.key;
+    if (aircraft.name && aircraft.name.toLowerCase().includes(query)) {
+      results.push({
+        id: aircraftKey,
+        name: aircraft.name,
+        range: aircraft.range,
+      });
+    }
+  });
+
+  res.json(results);
 });
