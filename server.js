@@ -121,3 +121,49 @@ app.delete("/delete-aircraft/:id", (req, res) => {
     }
   });
 });
+
+// SEARCH ALL AIRCRAFTS
+
+app.get("/aircrafts", async (req, res) => {
+  const query = req.query.term ? req.query.term.trim().toLowerCase() : "";
+
+  let results = [];
+
+  const aircraftsRef = db.ref("aircrafts");
+  const snapshot = await aircraftsRef.once("value");
+  snapshot.forEach((childSnapshot) => {
+    const aircraft = childSnapshot.val();
+    const aircraftKey = childSnapshot.key;
+    if (
+      query === "" ||
+      (aircraft.name && aircraft.name.toLowerCase().includes(query))
+    ) {
+      results.push({ id: aircraftKey, text: aircraft.name });
+    }
+  });
+
+  res.json(results);
+});
+
+// SEARCH ALL AIRPORTS
+
+app.get("/airports", async (req, res) => {
+  const query = req.query.term ? req.query.term.trim().toLowerCase() : "";
+
+  let results = [];
+
+  const airportsRef = db.ref("airports");
+  const snapshot = await airportsRef.once("value");
+  snapshot.forEach((childSnapshot) => {
+    const airport = childSnapshot.val();
+    const airportKey = childSnapshot.key;
+    if (
+      query === "" ||
+      (airport.name && airport.name.toLowerCase().includes(query))
+    ) {
+      results.push({ id: airportKey, text: airport.name });
+    }
+  });
+
+  res.json(results);
+});
