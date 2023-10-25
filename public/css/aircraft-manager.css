@@ -108,6 +108,86 @@
   color: var(--clr-primary-700);
 }
 
+.modal {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  top: 90px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal__content {
+  margin: 15% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  border-radius: 0.875rem;
+  background-color: #f4f4f4;
+}
+
+.modal__interactives {
+  margin-bottom: 2rem;
+}
+
+.modal__search-input {
+  margin-right: 0.5rem;
+}
+
+.modal__buttons {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.modal__search-button {
+  padding: 0.25rem 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  background-color: var(--bg-primary-500);
+  color: var(--clr-neutral-300);
+}
+
+.modal__search-button:hover {
+  background-color: var(--bg-primary-400);
+  color: var(--clr-primary-700);
+}
+
+.modal__close-button {
+  margin: 0 0.5rem;
+  padding: 0;
+  line-height: 1;
+  font-size: 1.25rem;
+  border: none;
+  background: none;
+  color: black;
+  cursor: pointer;
+}
+
+.modal__result-item {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.modal__result-item p {
+  margin-right: 1rem;
+}
+
+.modal__result-item button {
+  padding: 0.25rem 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  background-color: var(--bg-primary-500);
+  color: var(--clr-neutral-300);
+}
+
+.modal__result-item button:hover {
+  background-color: var(--bg-primary-400);
+  color: var(--clr-primary-700);
+}
+
 @media (min-width: 800px) {
   .manager__card-container {
     flex-direction: row;
