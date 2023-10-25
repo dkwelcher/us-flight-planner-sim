@@ -105,3 +105,19 @@ app.put("/update-aircraft", (req, res) => {
     }
   });
 });
+
+// DELETE AIRCRAFT
+
+app.delete("/delete-aircraft/:id", (req, res) => {
+  const aircraftId = req.params.id;
+
+  const ref = db.ref(`aircrafts/${aircraftId}`);
+
+  ref.remove((error) => {
+    if (error) {
+      res.status(500).json({ message: "FAILURE" });
+    } else {
+      res.json({ message: "SUCCESS" });
+    }
+  });
+});
