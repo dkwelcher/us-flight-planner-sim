@@ -1,5 +1,6 @@
 $(function () {
   $("#modify-button").prop("disabled", true);
+  $("#delete-button").prop("disabled", true);
 
   // CREATE AIRCRAFT
 
@@ -97,6 +98,7 @@ $(function () {
               "disabled"
             );
             $("#modify-button").prop("disabled", false);
+            $("#delete-button").prop("disabled", false);
           });
           resultDiv.append(selectBtn);
           resultsContainer.append(resultDiv);
@@ -150,6 +152,48 @@ $(function () {
         error: function (error) {
           console.error(error);
           $("#error-msg-manage").text("Error updating aircraft.").show();
+        },
+      });
+    }
+  });
+
+  // DELETE AIRCRAFT
+
+  $("#delete-button").on("click", function () {
+    const id = $("#manage-aircraft-id").val().trim();
+    const name = $("#manage-aircraft-name").val().trim();
+
+    if (id.length < 1) {
+      $("#error-msg-manage")
+        .text("Please select an aircraft first.")
+        .css("visibility", "visible");
+    } else {
+      $("#error-msg-manage").css("visibility", "hidden");
+      $.ajax({
+        url: `http://localhost:8888/delete-aircraft/${id}`,
+        method: "DELETE",
+        success: function (response) {
+          if (response.message === "SUCCESS") {
+            $("#aircraft-name").text(name);
+            $("#success-fail-msg").text(" has been successfully deleted!");
+            $(".success-strip")
+              .removeClass("hidden")
+              .removeClass("failure-background-color")
+              .addClass("success-background-color");
+            $(
+              "#manage-aircraft-id, #manage-aircraft-name, #manage-aircraft-range"
+            ).val("");
+            $("#delete-button").prop("disabled", true);
+          } else {
+            $("#success-fail-msg").text("Something went wrong.");
+            $(".success-strip")
+              .removeClass("hidden")
+              .removeClass("success-background-color")
+              .addClass("failure-background-color");
+          }
+        },
+        error: function (error) {
+          console.log("Error: " + error);
         },
       });
     }
