@@ -59,6 +59,54 @@ function isAllDigits(range) {
   return /^\d+$/.test(range);
 }
 
+// SUCCESS STRIP
+
 $("#success-close-button").on("click", function () {
   $(".success-strip").addClass("hidden");
 });
+
+// SEARCH MODAL
+
+$("#select-button").on("click", function () {
+  $("#aircraft-search-modal").css("display", "block");
+});
+
+$("#modal-search-button").on("click", function () {
+  searchAircrafts();
+});
+
+$("#modal-close-button").on("click", function () {
+  $("#modal-search-input").val("");
+  $("#aircraft-search-modal").css("display", "none");
+});
+
+function searchAircrafts() {
+  const query = $("#modal-search-input").val().trim();
+  $.ajax({
+    url: "http://localhost:8888/search-aircraft",
+    method: "POST",
+    data: JSON.stringify({ query }),
+    contentType: "application/json",
+    success: function (data) {
+      const resultsContainer = $("#modal-search-results");
+      resultsContainer.empty();
+
+      data.forEach((aircraft) => {
+        const resultDiv = $("<div>")
+          .addClass("modal__result-item")
+          .addClass("flex");
+        resultDiv.append($("<p>").text(aircraft.name));
+        const selectBtn = $("<button>").text("Select");
+        selectBtn.on("click", function () {
+          $("#manage-aircraft-id").val(aircraft.id);
+          $("#manage-aircraft-name").val(aircraft.name);
+          $("#manage-aircraft-range").val(aircraft.range);
+          $("#modal-search-input").val("");
+          $("#aircraft-search-modal").css("display", "none");
+        });
+        resultDiv.append(selectBtn);
+        resultsContainer.append(resultDiv);
+      });
+    },
+  });
+}
