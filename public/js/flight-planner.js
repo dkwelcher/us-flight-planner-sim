@@ -71,8 +71,8 @@ $(function () {
       contentType: "application/json",
       success: function (response) {
         if (response.status === "success") {
-          console.log(response.data);
           generatePathOnMap(response);
+          updateFlightPlanTable(response.data);
         } else {
           console.error(response.message);
         }
@@ -115,5 +115,26 @@ $(function () {
     });
 
     map.fitBounds(polyline.getBounds());
+  }
+
+  function updateFlightPlanTable(detailedPath) {
+    const tbody = $("#leg-table tbody");
+
+    tbody.empty();
+
+    for (let i = 0; i < detailedPath.length - 1; i++) {
+      const fromAirport = detailedPath[i];
+      const toAirport = detailedPath[i + 1];
+
+      const row = `
+            <tr>
+                <td>${i + 1}</td>
+                <td>${fromAirport.AirportName}</td>
+                <td>${toAirport.AirportName}</td>
+            </tr>
+        `;
+
+      tbody.append(row);
+    }
   }
 });
