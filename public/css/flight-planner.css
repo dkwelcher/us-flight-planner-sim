@@ -79,6 +79,11 @@ th {
   margin-bottom: 1rem;
 }
 
+.planner__leg-table td,
+.planner__leg-table th {
+  padding: 0 8px;
+}
+
 .planner__map {
   min-height: 400px;
   width: 100%;
