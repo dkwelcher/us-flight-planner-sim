@@ -60,28 +60,55 @@ $(function () {
     const startingAirportICAO = $("#starting-airport-name").val();
     const destinationAirportICAO = $("#destination-airport-name").val();
 
-    $.ajax({
-      url: "http://localhost:8888/create-flight-plan",
-      method: "POST",
-      data: JSON.stringify({
-        aircraftId: aircraftId,
-        startingAirportICAO: startingAirportICAO,
-        destinationAirportICAO: destinationAirportICAO,
-      }),
-      contentType: "application/json",
-      success: function (response) {
-        if (response.status === "success") {
-          generatePathOnMap(response);
-          updateFlightPlanTable(response.data);
-        } else {
-          console.error(response.message);
-        }
-      },
-      error: function (error) {
-        console.error("Error:", error);
-      },
-    });
+    const errorMessage = validateInput(
+      aircraftId,
+      startingAirportICAO,
+      destinationAirportICAO
+    );
+
+    if (errorMessage.length !== 0) {
+      $("#error-msg-planner").text(errorMessage).css("visibility", "visible");
+    } else {
+      $("#error-msg-planner").css("visibility", "hidden");
+      $.ajax({
+        url: "http://localhost:8888/create-flight-plan",
+        method: "POST",
+        data: JSON.stringify({
+          aircraftId: aircraftId,
+          startingAirportICAO: startingAirportICAO,
+          destinationAirportICAO: destinationAirportICAO,
+        }),
+        contentType: "application/json",
+        success: function (response) {
+          if (response.status === "success") {
+            generatePathOnMap(response);
+            updateFlightPlanTable(response.data);
+          } else {
+            console.error(response.message);
+          }
+        },
+        error: function (error) {
+          console.error("Error:", error);
+        },
+      });
+    }
   });
+
+  function validateInput(
+    aircraftID,
+    startingAirportICAO,
+    destinationAirportICAO
+  ) {
+    if (aircraftID === null) {
+      return "Please select aircraft.";
+    } else if (startingAirportICAO === null) {
+      return "Please select starting airport.";
+    } else if (destinationAirportICAO === null) {
+      return "Please select destination airport.";
+    } else {
+      return "";
+    }
+  }
 
   function generatePathOnMap(response) {
     if (polyline) {
