@@ -7,13 +7,14 @@
 
   --bg-neutral-100: #ffffff;
   --bg-neutral-200: #eff6ff;
+  --bg-neutral-300: #d1e2f7;
 
   --clr-primary-700: #172554;
   --clr-primary-900: #101010;
 
   --clr-neutral-200: #ffffff;
   --clr-neutral-300: #eff6ff;
-  --clr-neutral-400: #dbeafe;
+  --clr-neutral-400: #e0ecfc;
 
   --clr-error-msg: #ee2e2e;
 
@@ -36,7 +37,7 @@
 body {
   line-height: 1.5;
   height: 100vh;
-  background-color: var(--bg-neutral-200);
+  background-color: var(--bg-neutral-300);
   color: var(--clr-primary-900);
 }
 
