@@ -23,7 +23,7 @@ admin.initializeApp({
       process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
     client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL,
   }),
-  databaseURL: "https://us-flight-planner-sim-default-rtdb.firebaseio.com/",
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
 });
 
 const db = admin.database();
