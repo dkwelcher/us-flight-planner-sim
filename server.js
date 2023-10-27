@@ -28,7 +28,7 @@ admin.initializeApp({
 
 const db = admin.database();
 
-// CREATE AIRCRAFT
+// CREATE AIRCRAFT ENDPOINT
 
 app.post("/create-aircraft", (req, res) => {
   const { id, name, range } = req.body;
@@ -48,7 +48,7 @@ app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
 });
 
-// SEARCH AIRCRAFT(S)
+// SEARCH AIRCRAFT(S) ENDPOINT
 
 app.post("/search-aircraft", async (req, res) => {
   const query = req.body.query.trim().toLowerCase();
@@ -86,13 +86,13 @@ app.post("/search-aircraft", async (req, res) => {
   res.json(results);
 });
 
-// UPDATE AIRCRAFT
+// UPDATE AIRCRAFT ENDPOINT
 
 app.put("/update-aircraft", (req, res) => {
   const { id, name, range } = req.body;
 
   if (!id || !name || !range) {
-    return res.status(400).json({ message: "All fields are required!" });
+    return res.status(400).json({ message: "All fields are required." });
   }
 
   const ref = db.ref(`aircrafts/${id}`);
@@ -106,7 +106,7 @@ app.put("/update-aircraft", (req, res) => {
   });
 });
 
-// DELETE AIRCRAFT
+// DELETE AIRCRAFT ENDPOINT
 
 app.delete("/delete-aircraft/:id", (req, res) => {
   const aircraftId = req.params.id;
@@ -122,7 +122,7 @@ app.delete("/delete-aircraft/:id", (req, res) => {
   });
 });
 
-// SEARCH ALL AIRCRAFTS
+// SEARCH ALL AIRCRAFTS ENDPOINT
 
 app.get("/aircrafts", async (req, res) => {
   const query = req.query.term ? req.query.term.trim().toLowerCase() : "";
@@ -145,7 +145,7 @@ app.get("/aircrafts", async (req, res) => {
   res.json(results);
 });
 
-// SEARCH ALL AIRPORTS
+// SEARCH ALL AIRPORTS ENDPOINT
 
 app.get("/airports", async (req, res) => {
   const query = req.query.term ? req.query.term.trim().toLowerCase() : "";
@@ -168,7 +168,7 @@ app.get("/airports", async (req, res) => {
   res.json(results);
 });
 
-// CREATE FLIGHT PLAN
+// CREATE FLIGHT PLAN ENDPOINT
 
 app.post("/create-flight-plan", async (req, res) => {
   const { aircraftId, startingAirportICAO, destinationAirportICAO } = req.body;

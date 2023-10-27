@@ -94,6 +94,7 @@ th {
   min-height: 400px;
   width: 100%;
 }
+/* Desktop and Tablet media queries */
 
 @media (min-width: 800px) {
   .planner__text-container {

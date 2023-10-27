@@ -202,6 +202,8 @@ $(function () {
     }
   });
 
+  // INPUT VALIDATION HELPER FUNCTION (for CRUD operations)
+
   function validateInput(id, name, range) {
     if (id.length < 1 || id.length > 25) {
       return "ID must be 25 characters or fewer.";
@@ -213,6 +215,8 @@ $(function () {
       return "";
     }
   }
+
+  // DIGITS-ONLY VALIDATION HELPER FUNCTION (for validateInput())
 
   function isAllDigits(range) {
     return /^\d+$/.test(range);

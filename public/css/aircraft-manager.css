@@ -194,6 +194,8 @@
   color: var(--clr-primary-700);
 }
 
+/* Desktop and Tablet media queries */
+
 @media (min-width: 800px) {
   .manager__card-container {
     flex-direction: row;

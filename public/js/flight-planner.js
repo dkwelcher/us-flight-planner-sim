@@ -1,5 +1,6 @@
 $(function () {
-  // Aircraft Select2
+  // AIRCRAFT SELECT2
+
   $("#aircraft-name").select2({
     ajax: {
       url: "http://localhost:8888/aircrafts",
@@ -20,7 +21,8 @@ $(function () {
     minimumInputLength: 1,
   });
 
-  // Airport Select2
+  // AIRPORT SELECT2
+
   $("#starting-airport-name, #destination-airport-name").select2({
     ajax: {
       url: "http://localhost:8888/airports",
@@ -54,6 +56,8 @@ $(function () {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
   }
+
+  // CREATE FLIGHT PLAN
 
   $("#create-flight-plan").on("click", function () {
     const aircraftId = $("#aircraft-name").val();
@@ -94,6 +98,8 @@ $(function () {
     }
   });
 
+  // INPUT VALIDATION HELPER FUNCTION
+
   function validateInput(
     aircraftID,
     startingAirportICAO,
@@ -109,6 +115,8 @@ $(function () {
       return "";
     }
   }
+
+  // LEAFLET MAP GENERATION
 
   function generatePathOnMap(response) {
     if (polyline) {
@@ -143,6 +151,8 @@ $(function () {
 
     map.fitBounds(polyline.getBounds());
   }
+
+  // FLIGHT PLAN TABLE UPDATE
 
   function updateFlightPlanTable(detailedPath) {
     const tbody = $("#leg-table tbody");
