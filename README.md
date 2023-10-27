@@ -23,4 +23,3 @@ After cloning the repository:
 - Application is not optimized for desktop layout.
 - Invalid flight plans show the stops reached. Client should communicate to user that flight plan is impossible with selected aircraft.
 - Using Chrome developer tools, when creating a flight plan in mobile view, the map popup text will sometimes not display.
-- Card background color is a subtle change from the Main content background color. Monitors with resolutions lower than 1440p may not see the color difference.
