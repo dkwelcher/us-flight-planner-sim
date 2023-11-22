@@ -207,7 +207,7 @@ app.post("/create-flight-plan", async (req, res) => {
       airportsData
     );
 
-    if (path) {
+    if (path.length > 1) {
       res.json({ status: "success", data: path });
     } else {
       res.status(400).json({ status: "error", message: "No path found" });
