@@ -96,6 +96,8 @@ $(function () {
           $("#error-msg-planner")
             .text("No path found")
             .css("visibility", "visible");
+          resetMap();
+          updateFlightPlanTable([]);
         },
       });
     }
@@ -122,13 +124,7 @@ $(function () {
   // LEAFLET MAP GENERATION
 
   function generatePathOnMap(response) {
-    if (polyline) {
-      map.removeLayer(polyline);
-    }
-
-    markersArray.forEach((marker) => {
-      map.removeLayer(marker);
-    });
+    resetMap();
 
     markersArray = [];
 
@@ -153,6 +149,16 @@ $(function () {
     });
 
     map.fitBounds(polyline.getBounds());
+  }
+
+  function resetMap() {
+    if (polyline) {
+      map.removeLayer(polyline);
+    }
+
+    markersArray.forEach((marker) => {
+      map.removeLayer(marker);
+    });
   }
 
   // FLIGHT PLAN TABLE UPDATE
