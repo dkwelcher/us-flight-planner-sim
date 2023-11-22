@@ -93,6 +93,9 @@ $(function () {
         },
         error: function (error) {
           console.error("Error:", error);
+          $("#error-msg-planner")
+            .text("No path found")
+            .css("visibility", "visible");
         },
       });
     }
