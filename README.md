@@ -20,6 +20,4 @@ After cloning the repository:
 
 ## Current Issues
 
-- Application is not optimized for desktop layout.
-- Invalid flight plans show the stops reached. Client should communicate to user that flight plan is impossible with selected aircraft.
-- Using Chrome developer tools, when creating a flight plan in mobile view, the map popup text will sometimes not display.
+- Layouts are not fully optimized.
