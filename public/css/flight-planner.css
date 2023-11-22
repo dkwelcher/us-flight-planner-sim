@@ -58,9 +58,11 @@ th {
 }
 
 .planner__error {
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   color: var(--clr-error-msg);
   visibility: hidden;
+  text-align: center;
 }
 
 .planner__button-container {
