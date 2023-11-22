@@ -207,7 +207,10 @@ app.post("/create-flight-plan", async (req, res) => {
       airportsData
     );
 
-    if (path.length > 1) {
+    if (
+      path.length > 1 &&
+      path[path.length - 1].ICAO === destinationAirportICAO
+    ) {
       res.json({ status: "success", data: path });
     } else {
       res.status(400).json({ status: "error", message: "No path found" });
