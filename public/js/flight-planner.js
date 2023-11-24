@@ -85,6 +85,7 @@ $(function () {
         contentType: "application/json",
         success: function (response) {
           if (response.status === "success") {
+            $("error-msg-planner").css("visibility", "hidden");
             generatePathOnMap(response);
             updateFlightPlanTable(response.data);
           } else {
